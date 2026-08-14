@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkMenu" id="menu">
+    <child>
+      <object class="GtkMenuItem" id="manager">
+        <property name="label">Bluetooth Manager</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="adapters">
+        <property name="label">Adapter Settings</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="separator-1"/>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="power-on">
+        <property name="label">Power On</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="power-off">
+        <property name="label">Power Off</property>
+      </object>
+    </child>
+  </object>
+</interface>

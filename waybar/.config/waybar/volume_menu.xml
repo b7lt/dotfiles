@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object class="GtkMenu" id="menu">
+    <child>
+      <object class="GtkMenuItem" id="volume-control">
+        <property name="label">Volume Control</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkSeparatorMenuItem" id="separator-1"/>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="volume-up">
+        <property name="label">Volume Up</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="volume-down">
+        <property name="label">Volume Down</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="mute-output">
+        <property name="label">Toggle Output Mute</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkMenuItem" id="mute-mic">
+        <property name="label">Toggle Mic Mute</property>
+      </object>
+    </child>
+  </object>
+</interface>

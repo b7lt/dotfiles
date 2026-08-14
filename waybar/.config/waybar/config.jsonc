@@ -1,0 +1,189 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "top",
+    "height": 34,
+    "spacing": 6,
+    "exclusive": true,
+    "reload_style_on_change": true,
+    "modules-left": [
+        "hyprland/workspaces"
+        // "hyprland/submap"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+        "network",
+        "pulseaudio",
+        "power-profiles-daemon",
+        "bluetooth",
+        "mpris"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{name}",
+        "sort-by": "number",
+        "show-special": true,
+        // "format-window-separator": "",
+        // "workspace-taskbar": {
+        //     "enable": true,
+        //     "update-active-window": true,
+        //     "format": "{icon} {title:.22}",
+        //     "icon-size": 18,
+        //     "on-click-window": "${SCRIPTS}/focus-window.sh {address} {button}"
+        // },
+        "persistent-workspaces": {
+            "DP-1": [ 1, 2, 3, 4, 5 ],
+            "DP-2": [ 6, 7, 8, 9, 10 ],
+            "DP-3": [ 11, 12 ]
+        }
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 8
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        // "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "󰃭 {:%a, %b %d  %I:%M %p}",
+        "format-alt": "󰸗 {:%A, %B %d, %Y  %r}",
+        "interval": 1,
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "󰈀  wired",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid}\n{ifname}: {ipaddr}/{cidr}\nSignal: {signalStrength}%",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "format-linked": "󰈀  linked",
+        "format-disconnected": "󰤭",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor",
+        "menu": "on-click-right",
+        "menu-file": "$HOME/.config/waybar/network_menu.xml",
+        "menu-actions": {
+            "connections": "nm-connection-editor",
+            "nmtui": "kitty -e nmtui",
+            "wifi-on": "nmcli radio wifi on",
+            "wifi-off": "nmcli radio wifi off"
+        }
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon}  {volume}%",
+        "format-bluetooth-muted": "󰝟 ",
+        "format-muted": "󰝟",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol",
+        "menu": "on-click-right",
+        "menu-file": "$HOME/.config/waybar/volume_menu.xml",
+        "menu-actions": {
+            "volume-control": "pavucontrol",
+            "volume-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 10%+",
+            "volume-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-",
+            "mute-output": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+            "mute-mic": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        }
+    },
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
+        "format-connected": " {num_connections}",
+        "tooltip-format": "{controller_alias}\n{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "on-click": "blueman-manager",
+        "menu": "on-click-right",
+        "menu-file": "$HOME/.config/waybar/bluetooth_menu.xml",
+        "menu-actions": {
+            "manager": "blueman-manager",
+            "adapters": "blueman-adapters",
+            "power-on": "bluetoothctl power on",
+            "power-off": "bluetoothctl power off"
+        }
+    },
+    "mpris": {
+        "format": "{status_icon} {dynamic}",
+        "format-paused": "{status_icon} {dynamic}",
+        "format-stopped": "",
+        "dynamic-len": 34,
+        "dynamic-order": [ "title", "artist" ],
+        "tooltip-format": "{player_icon} {player} ({status})\n{artist} - {title}",
+        "player-icons": {
+            "default": "",
+            "spotify": "",
+            "firefox": ""
+        },
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        }
+    },
+    "custom/media": {
+        "format": "{icon} {text}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    }
+}

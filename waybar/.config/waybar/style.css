@@ -1,0 +1,148 @@
+@define-color bg rgba(10, 14, 12, 0.58);
+@define-color bg-solid #0b0f0d;
+@define-color surface rgba(24, 38, 32, 0.72);
+@define-color surface-hover rgba(38, 59, 49, 0.82);
+@define-color border rgba(126, 189, 110, 0.36);
+@define-color border-muted rgba(255, 255, 255, 0.06);
+@define-color text #e7eee4;
+@define-color muted #a8b6a2;
+@define-color green #7ebd6e;
+@define-color green-bright #9fda8e;
+@define-color amber #e9cc9d;
+@define-color red #f66151;
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "JetBrains Mono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @text;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    margin: 3px 4px 0;
+    padding: 4px;
+    border: 2px solid @border-muted;
+    border-radius: 10px;
+    background: @bg;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+tooltip {
+    border: 1px solid @border;
+    border-radius: 8px;
+    background: alpha(@bg-solid, 0.94);
+    color: @text;
+}
+
+tooltip label {
+    padding: 6px 8px;
+    color: @text;
+}
+
+#workspaces {
+    padding: 0 2px;
+}
+
+#workspaces button {
+    min-width: 28px;
+    margin: 0 2px;
+    padding: 2px 9px;
+    border-radius: 8px;
+    background: transparent;
+    color: @muted;
+    transition: all 160ms ease;
+}
+
+#workspaces button:hover {
+    background: @surface-hover;
+    color: @text;
+}
+
+#workspaces button.active {
+    background: alpha(@green, 0.86);
+    color: #07100b;
+    box-shadow: inset 0 0 0 1px alpha(@green-bright, 0.45);
+}
+
+#workspaces button.urgent {
+    background: alpha(@amber, 0.88);
+    color: #ffffff;
+}
+
+#workspaces button.empty:not(.active) {
+    color: alpha(@muted, 0.55);
+}
+
+#workspaces button.empty.active {
+    color: #07100b;
+}
+
+#clock,
+#tray,
+#pulseaudio,
+#network,
+#bluetooth,
+#power-profiles-daemon,
+#mpris {
+    margin: 0 3px;
+    padding: 4px 11px;
+    border-radius: 8px;
+    background: @surface;
+    color: @text;
+}
+
+#clock {
+    color: @green-bright;
+    letter-spacing: 0;
+}
+
+#tray {
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+#pulseaudio:hover,
+#network:hover,
+#bluetooth:hover,
+#power-profiles-daemon:hover,
+#mpris:hover,
+#clock:hover {
+    background: @surface-hover;
+}
+
+#pulseaudio.muted,
+#network.disconnected,
+#bluetooth.disabled,
+#bluetooth.off,
+#mpris.stopped {
+    color: @muted;
+}
+
+#power-profiles-daemon.performance {
+    color: @amber;
+}
+
+#power-profiles-daemon.power-saver {
+    color: @green-bright;
+}
+
+#mpris.paused {
+    color: @muted;
+}
+
+#mpris.playing {
+    color: @green-bright;
+}
