@@ -1,7 +1,7 @@
 -- Window rules wiki https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 
 -- Generic floating position
-hl.window_rule({ match = { float = true }, center = true, persistent_size = true })
+-- hl.window_rule({ match = { float = true }, center = true, persistent_size = true })
 
 -- Picture-in-Picture
 hl.window_rule({
@@ -101,6 +101,13 @@ local modalMatches = {
     { class = "^(hyprland-share-picker)$"},
 }
 for _, m in ipairs(modalMatches) do hl.window_rule({ match = m, float = true }) end
+
+-- Float Media Apps
+local mediaApps = {
+    { class = "^(smplayer)$" },
+    { class = "^(org.gnome.Loupe)$" }
+}
+for _, m in ipairs(mediaApps) do hl.window_rule({ match = m, float = true, center = true }) end
 
 -- Ignore maximize requests from all apps. You'll probably like this.
 hl.window_rule({
