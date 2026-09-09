@@ -44,6 +44,10 @@
 @define-color secondary_sidebar_bg_color #000000;
 @define-color secondary_sidebar_fg_color #d3c6aa;
 
+/* Focused selection states */
+@define-color theme_selected_bg_color @accent_bg_color;
+@define-color theme_selected_fg_color @accent_fg_color;
+
 /* Backdrop/unfocused states */
 @define-color theme_unfocused_fg_color @window_fg_color;
 @define-color theme_unfocused_text_color @view_fg_color;
@@ -91,13 +95,13 @@
     --sidebar-backdrop-color: @window_bg_color;
     --sidebar-border-color: @window_bg_color;
 
-    --warning-bg-color: #25635a;
+    --warning-bg-color: #286058;
     --warning-fg-color: #deedeb;
     --warning-color: #7fbbb3;
 
     --success-color: #dbbc7f;
-    --success-bg-color: #8f6718;
-    --success-fg-color: #faf0dc;
+    --success-bg-color: #88651f;
+    --success-fg-color: #f5ebd7;
     
     --shade-color: rgba(0, 0, 0, 0.36);
 }

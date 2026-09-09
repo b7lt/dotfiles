@@ -79,6 +79,7 @@ hl.window_rule({
 local terminals = "^(kitty|ghostty|[Kk]onsole|Alacritty|gnome-terminal|xfce[0-9]?-terminal)$"
 
 hl.window_rule({ match = { class = "^(firefox|zen)$" }, opacity = "1.0 override" })
+hl.window_rule({ match = { class = "^(vesktop|discord)$" }, opacity = "1.0 override" })
 hl.window_rule({ match = { class = terminals }, opacity = "1.0 override" }) -- Override opacity in favor of terminal settings for opacity. If your terminal doesn't support transparency, you can remove this rule.
 hl.window_rule({ match = { class = "^(mpv|org.kde.haruna|.*plex.*|org\\.kde\\.gwenview|.*vlc.*)$" }, opacity = "1.0 override" })
 
@@ -107,7 +108,7 @@ local mediaApps = {
     { class = "^(smplayer)$" },
     { class = "^(org.gnome.Loupe)$" }
 }
-for _, m in ipairs(mediaApps) do hl.window_rule({ match = m, float = true, center = true }) end
+for _, m in ipairs(mediaApps) do hl.window_rule({ match = m, float = true, center = truee }) end
 
 -- Ignore maximize requests from all apps. You'll probably like this.
 hl.window_rule({
